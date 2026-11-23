@@ -1,0 +1,107 @@
+name: Build macOS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  VERSION: 0.1.0
+
+jobs:
+  mac:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore binary assets
+        run: |
+          mkdir -p assets
+          for f in assets_b64/*.b64; do [ -e "$f" ] && base64 -D -i "$f" -o "assets/$(basename "${f%.b64}")"; done || true
+          ls -la assets
+
+      - name: Configure (universal: Apple Silicon + Intel)
+        run: |
+          mkdir -p logs
+          set -o pipefail
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" 2>&1 | tee logs/1_configure.txt
+
+      - name: Build VST3 + AU + Standalone + tests
+        run: |
+          set -o pipefail
+          cmake --build build --config Release --target RSquelch_VST3 RSquelch_AU RSquelch_Standalone RSquelchDspTests -j 4 2>&1 | tee logs/2_build.txt
+
+      - name: DSP tests
+        run: |
+          set -o pipefail
+          ./build/RSquelchDspTests 2>&1 | tee logs/3_tests.txt
+
+      - name: Ad-hoc sign + check architectures
+        run: |
+          set -o pipefail
+          ART=build/RSquelch_artefacts/Release
+          for b in "$ART/VST3/R-Squelch.vst3" "$ART/AU/R-Squelch.component" "$ART/Standalone/R-Squelch.app"; do
+            codesign --force --deep --sign - "$b"
+          done
+          { lipo -info "$ART/VST3/R-Squelch.vst3/Contents/MacOS/R-Squelch"
+            lipo -info "$ART/AU/R-Squelch.component/Contents/MacOS/R-Squelch"
+            lipo -info "$ART/Standalone/R-Squelch.app/Contents/MacOS/R-Squelch"; } 2>&1 | tee logs/4_arch.txt
+
+      - name: Validate Audio Unit (auval)
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          mkdir -p ~/Library/Audio/Plug-Ins/Components
+          cp -R build/RSquelch_artefacts/Release/AU/R-Squelch.component ~/Library/Audio/Plug-Ins/Components/
+          killall -9 AudioComponentRegistrar 2>/dev/null || true
+          sleep 3
+          auval -strict -v aumu RSqu Rbel 2>&1 | tail -n 120 | tee logs/5_auval.txt
+
+      - name: Validate VST3 (pluginval)
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          curl -sSL -o pluginval.zip https://github.com/Tracktion/pluginval/releases/latest/download/pluginval_macOS.zip
+          unzip -q pluginval.zip
+          ./pluginval.app/Contents/MacOS/pluginval --strictness-level 8 --skip-gui-tests --timeout-ms 120000 \
+            --validate build/RSquelch_artefacts/Release/VST3/R-Squelch.vst3 2>&1 | tail -n 120 | tee logs/6_pluginval.txt
+
+      - name: Make installer (.pkg) + zip
+        run: |
+          set -o pipefail
+          bash installer/mac/make_pkg.sh build/RSquelch_artefacts/Release "$VERSION" out 2>&1 | tee logs/7_package.txt
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: R-Squelch-${{ env.VERSION }}-Mac
+          path: out/*
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: mac-v${{ env.VERSION }}-build${{ github.run_number }}
+          name: R-Squelch ${{ env.VERSION }} for Mac (build ${{ github.run_number }})
+          body: |
+            R-Squelch ${{ env.VERSION }} for macOS: universal (Apple Silicon + Intel), macOS 10.13+.
+            R-Squelch-${{ env.VERSION }}-Mac.pkg installs the VST3, the Audio Unit and the standalone app.
+            Not signed with an Apple Developer ID: the first time, right-click the .pkg -> Open -> Open
+            (or System Settings -> Privacy & Security -> Open Anyway).
+          files: out/*
+
+      - name: Publish logs (branch ci-logs)
+        if: always()
+        run: |
+          mkdir -p logs
+          echo "${{ job.status }} run ${{ github.run_number }} commit ${{ github.sha }}" > logs/0_status.txt
+          for f in logs/*.txt; do tail -c 400000 "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done
+          git config user.name "r-squelch-ci"
+          git config user.email "ci@users.noreply.github.com"
+          git checkout --orphan ci-logs-tmp
+          git rm -r -q --cached . || true
+          git add -f logs
+          git commit -q -m "CI logs, run ${{ github.run_number }}"
+          git push -f origin HEAD:ci-logs
