@@ -20,7 +20,8 @@ for part in vst3 au app; do
   pkgbuild --analyze --root "$WORK/$part" "$WORK/$part.plist"
   n=$(/usr/libexec/PlistBuddy -c "Print" "$WORK/$part.plist" | grep -c "RootRelativeBundlePath" || true)
   for ((i=0; i<n; i++)); do
-    /usr/libexec/PlistBuddy -c "Set :$i:BundleIsRelocatable false" "$WORK/$part.plist"
+    /usr/libexec/PlistBuddy -c "Set :$i:BundleIsRelocatable false" "$WORK/$part.plist" 2>/dev/null \
+      || /usr/libexec/PlistBuddy -c "Add :$i:BundleIsRelocatable bool false" "$WORK/$part.plist"
   done
   pkgbuild --root "$WORK/$part" --component-plist "$WORK/$part.plist" \
            --identifier "com.rbell.rsquelch.$part" --version "$VER" --install-location / "$WORK/pkgs/rsquelch-$part.pkg"
