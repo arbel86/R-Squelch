@@ -1,0 +1,7 @@
+build/
+Output/
+.vs/
+build-mac/
+Output-mac/
+out/
+logs/

@@ -1,0 +1,118 @@
+ok:   oscillator peak stays bounded
+ok:   oscillator has (almost) no DC offset
+      [12dB] ok:   filter stays finite at max resonance + drive
+      [12dB] ok:   filter output bounded
+      [24dB] ok:   filter stays finite at max resonance + drive
+      [24dB] ok:   filter output bounded
+      [SH-5] ok:   filter stays finite at max resonance + drive
+      [SH-5] ok:   filter output bounded
+      [303] ok:   filter stays finite at max resonance + drive
+      [303] ok:   filter output bounded
+      [12dB] ok:   is a band-pass (centre > lows/highs)
+      [24dB] ok:   is a band-pass (centre > lows/highs)
+      [SH-5] ok:   is a band-pass (centre > lows/highs)
+ok:   envelope attack reaches 1
+ok:   envelope settles on sustain
+ok:   envelope releases to idle
+ok:   note-on produces sound
+ok:   voice frees after release
+ok:   silence after release
+ok:   extreme settings stay finite
+ok:   output stage keeps peaks within +-1
+ok:   filter starts at the top of the range (RANGE above the cutoff)
+ok:   filter is back at the top after a full cycle
+ok:   held note keeps sounding (long note)
+ok:   pitch motion moves the pitch up and down in cycles
+      acid @211 Hz: inharmonic -39.4 dB
+ok:   ACID saw is in tune (energy on the note's harmonics)
+ok:   ACID saw is centred (no DC) and bounded
+      acid @1.5 kHz: aliasing -29.1 dB
+ok:   ACID saw on a high note: aliasing below -25 dB at 1x quality
+ok:   ACID bends the ramp (clearly different from the plain saw)
+ok:   every pitch LFO preset starts on the played note
+ok:   RISE climbs, FALL dives
+ok:   JUMP switches between the note and note + RANGE
+ok:   STEPS climbs a 4-step staircase
+ok:   RANDOM gives varied steps within the range
+ok:   all pitch LFO presets play and stay finite
+ok:   filter TRIANGLE starts at the top, reaches the cutoff mid-cycle
+ok:   filter presets start at the top of the range (RISE starts at the cutoff)
+ok:   S&H RANDOM: the filter jumps between many random positions
+ok:   S&H: the same seed repeats the same pattern, a new seed (dice) gives another
+ok:   S&H: a 16-step loop (repeats every 4 cycles)
+      303: 8 kHz is -65.9 dB below 200 Hz (cutoff 1 kHz)
+ok:   303: low-pass, highs 3 octaves above the cutoff drop by more than 30 dB
+ok:   303: resonance builds a strong peak at the cutoff
+ok:   303: at full resonance the ring dies away (no endless whistle)
+ok:   303: stable and bounded at every sample rate, sweeping 20 Hz - 20 kHz, full reso + drive
+      303 vs SH-5 level: 2.0 dB
+ok:   303: level within 6 dB of the SH-5 mode
+      growl: -0.5 dB, fold: 0.7 dB (vs clean)
+ok:   GROWL and FOLD at full stay finite
+ok:   GROWL and FOLD keep the level within 9 dB
+ok:   FOLD adds bright overtones
+      unison 7 vs 1: -1.7 dB
+ok:   UNISON x7: finite, level within 4 dB of one voice
+ok:   UNISON x7: left and right differ (stereo spread)
+      comb: largest level change 5.1 dB
+ok:   COMB: finite at +-99 % feedback, every pitch, motion, mode and drive
+ok:   FLANGE: level stays within 6 dB at every setting (all modes, full DESTROY)
+ok:   COMB: echoes exactly one period of the comb pitch later
+ok:   FLANGE +: adds the delayed copy (lows pass, doubled)
+ok:   FLANGE -: subtracts the delayed copy (lows cancel)
+      destroy: harmonics 0.1% -> 9.7%
+ok:   DESTROY: distortion in the loop adds harmonics
+      flange peak: cutoff 500 -> 500 Hz, cutoff 2000 -> 2000 Hz
+ok:   FLANGE: follows the filter cutoff (the peak moves up with CUTOFF)
+      phaser level: 2.2 dB
+ok:   PHASER: finite, level within 4 dB
+ok:   PHASER: the notches sweep (tone changes over time)
+ok:   MODE RETRIG: every note starts at the top of the range
+      free: note starts at 0.49
+ok:   MODE FREE: the LFO kept running between notes
+      bar sync: note starts at 0.00
+ok:   MODE BAR SYNC: the note lands where the song position says
+      one shot: holds at 1.00 / 1.00
+ok:   MODE ONE SHOT: one sweep, then it holds at the end
+ok:   delay: first echo on the left at the synced time (1/8)
+ok:   delay: second echo ping-pongs to the right
+ok:   reverb: output stays finite
+ok:   reverb: tail present after the impulse
+ok:   reverb: tail decays
+ok:   gate: step 1 open, steps 2-3 closed
+ok:   bitcrusher: 2 bits gives only a handful of levels
+ok:   formant: finite, level within range
+ok:   tube at 0 = off (no added harmonics)
+ok:   tube adds even (2nd) and odd (3rd) harmonics
+ok:   tube at full drive stays finite
+ok:   tube keeps the level in a sensible range
+ok:   fuzz / square stay finite
+ok:   fuzz: strong octave-up (2nd harmonic)
+ok:   square: square-wave spectrum (3rd ~1/3, 5th ~1/5)
+ok:   square: symmetric (no even harmonics)
+ok:   square: crest factor ~1 (flat-topped, fully squashed)
+ok:   fuzz / square keep the level in a sensible range
+ok:   fuzz / square keep the level in a sensible range
+ok:   fuzz / square keep the level in a sensible range
+ok:   distortion type switching stays finite and bounded
+      sync 3.4 @211 Hz: inharmonic -34.8 dB
+ok:   sync keeps the pitch (non-harmonic energy below -30 dB)
+ok:   sync adds upper harmonics (brighter)
+      sync 5.3 @211 Hz: aliasing -32.6 dB
+ok:   heavy sync: aliasing below -30 dB at 1x quality
+      no sync @1.5 kHz: aliasing -29.2 dB
+ok:   plain saw on a high note: aliasing below -25 dB at 1x quality
+      FM 50% ratio 1: non-harmonic -44.9 dB
+ok:   FM stays in tune (ratio 1 and 2: energy on the note's harmonics)
+      FM 50% ratio 2: non-harmonic -46.5 dB
+ok:   FM stays in tune (ratio 1 and 2: energy on the note's harmonics)
+      FM 60%: average harmonic change 7.8 dB
+ok:   FM clearly reshapes the harmonics
+      full FM + SYNC peak 1.30
+ok:   full FM + full SYNC stays finite and bounded
+      formant: largest level change 1.4 dB
+ok:   formant keeps the volume (within 1.5 dB at every vowel and mix)
+      formant LFO: vowel moved between 0.00 and 4.00
+ok:   formant LFO sweeps the vowel (inside A..U)
+
+ALL TESTS PASSED

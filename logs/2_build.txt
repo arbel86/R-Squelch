@@ -1,0 +1,238 @@
+[  2%] Generating juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData1.cpp, juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData2.cpp, juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData3.cpp, juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData4.cpp, juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData.h
+[  4%] Building VST3 manifest helper for RSquelch
+-- The CXX compiler identification is AppleClang 17.0.0.17000013
+[  6%] Building CXX object CMakeFiles/RSquelchAssets.dir/juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData2.cpp.o
+[  8%] Building CXX object CMakeFiles/RSquelchAssets.dir/juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData1.cpp.o
+[ 11%] Building CXX object CMakeFiles/RSquelchAssets.dir/juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData3.cpp.o
+-- Detecting CXX compiler ABI info
+[ 13%] Building CXX object CMakeFiles/RSquelchAssets.dir/juce_binarydata_RSquelchAssets/JuceLibraryCode/BinaryData4.cpp.o
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/runner/work/R-Squelch/R-Squelch/build/vst3_helpers/RSquelch
+make[4]: warning: jobserver unavailable: using -j1.  Add `+' to parent make rule.
+[ 50%] Building CXX object CMakeFiles/vst3_helper.dir/Users/runner/work/R-Squelch/R-Squelch/build/_deps/juce-src/modules/juce_audio_plugin_client/VST3/juce_VST3ManifestHelper.cpp.o
+[ 15%] Linking CXX static library libRSquelchAssets.a
+[100%] Linking CXX executable vst3_helper
+[ 15%] Built target RSquelchAssets
+[ 17%] Building CXX object CMakeFiles/RSquelch.dir/Source/PluginProcessor.cpp.o
+[ 20%] Building CXX object CMakeFiles/RSquelch.dir/Source/PluginEditor.cpp.o
+[ 22%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_processors/juce_audio_processors.mm.o
+[100%] Built target vst3_helper
+[ 22%] Built target RSquelch_vst3_helper
+[ 24%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_gui_extra/juce_gui_extra.mm.o
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.cpp:1:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.h:12:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/Parameters.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/Effects.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/BandPassFilter.h:6:
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: warning: enumeration value 'Idle' not explicitly handled in switch [-Wswitch-enum]
+  132 |         switch (stage) {
+      |                 ^~~~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: note: add missing switch cases
+  132 |         switch (stage) {
+      |                 ^
+  133 |             case Attack:  out = aB + out * aC; if (out >= 1.f) { out = 1.f; stage = Decay; } break;
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:202:55: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  202 |     void init(int maxSamples) { buf.assign(maxSamples + 4, 0.f); w = 0; }
+      |                                     ~~~~~~ ~~~~~~~~~~~^~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:203:30: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  203 |     void push(float x) { buf[w] = x; if (++w >= (int)buf.size()) w = 0; }
+      |                          ~~~ ^
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:204:95: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  204 |     float at(int d) const { int i = w - 1 - d; while (i < 0) i += (int)buf.size(); return buf[i]; }
+      |                                                                                           ~~~ ^
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.cpp:1:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/Parameters.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/Effects.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/BandPassFilter.h:6:
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: warning: enumeration value 'Idle' not explicitly handled in switch [-Wswitch-enum]
+  132 |         switch (stage) {
+      |                 ^~~~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: note: add missing switch cases
+  132 |         switch (stage) {
+      |                 ^
+  133 |             case Attack:  out = aB + out * aC; if (out >= 1.f) { out = 1.f; stage = Decay; } break;
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:202:55: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  202 |     void init(int maxSamples) { buf.assign(maxSamples + 4, 0.f); w = 0; }
+      |                                     ~~~~~~ ~~~~~~~~~~~^~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:203:30: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  203 |     void push(float x) { buf[w] = x; if (++w >= (int)buf.size()) w = 0; }
+      |                          ~~~ ^
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:204:95: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  204 |     float at(int d) const { int i = w - 1 - d; while (i < 0) i += (int)buf.size(); return buf[i]; }
+      |                                                                                           ~~~ ^
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.cpp:2:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.h:16:
+/Users/runner/work/R-Squelch/R-Squelch/Source/UI/FxModules.h:166:41: warning: private field 'state' is not used [-Wunused-private-field]
+  166 |     juce::AudioProcessorValueTreeState& state;
+      |                                         ^
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.cpp:1:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.h:16:
+/Users/runner/work/R-Squelch/R-Squelch/Source/UI/FxModules.h:166:41: warning: private field 'state' is not used [-Wunused-private-field]
+  166 |     juce::AudioProcessorValueTreeState& state;
+      |                                         ^
+5 warnings generated.
+5 warnings generated.
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.cpp:1:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/Parameters.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/Effects.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/BandPassFilter.h:6:
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: warning: enumeration value 'Idle' not explicitly handled in switch [-Wswitch-enum]
+  132 |         switch (stage) {
+      |                 ^~~~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: note: add missing switch cases
+  132 |         switch (stage) {
+      |                 ^
+  133 |             case Attack:  out = aB + out * aC; if (out >= 1.f) { out = 1.f; stage = Decay; } break;
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:202:55: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  202 |     void init(int maxSamples) { buf.assign(maxSamples + 4, 0.f); w = 0; }
+      |                                     ~~~~~~ ~~~~~~~~~~~^~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:203:30: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  203 |     void push(float x) { buf[w] = x; if (++w >= (int)buf.size()) w = 0; }
+      |                          ~~~ ^
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:204:95: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  204 |     float at(int d) const { int i = w - 1 - d; while (i < 0) i += (int)buf.size(); return buf[i]; }
+      |                                                                                           ~~~ ^
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.cpp:1:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.h:12:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/Parameters.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/Effects.h:6:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/DSP/BandPassFilter.h:6:
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: warning: enumeration value 'Idle' not explicitly handled in switch [-Wswitch-enum]
+  132 |         switch (stage) {
+      |                 ^~~~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:132:17: note: add missing switch cases
+  132 |         switch (stage) {
+      |                 ^
+  133 |             case Attack:  out = aB + out * aC; if (out >= 1.f) { out = 1.f; stage = Decay; } break;
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:202:55: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  202 |     void init(int maxSamples) { buf.assign(maxSamples + 4, 0.f); w = 0; }
+      |                                     ~~~~~~ ~~~~~~~~~~~^~~
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:203:30: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  203 |     void push(float x) { buf[w] = x; if (++w >= (int)buf.size()) w = 0; }
+      |                          ~~~ ^
+/Users/runner/work/R-Squelch/R-Squelch/Source/DSP/synth_dsp.h:204:95: warning: implicit conversion changes signedness: 'int' to 'size_type' (aka 'unsigned long') [-Wsign-conversion]
+  204 |     float at(int d) const { int i = w - 1 - d; while (i < 0) i += (int)buf.size(); return buf[i]; }
+      |                                                                                           ~~~ ^
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginProcessor.cpp:2:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.h:16:
+/Users/runner/work/R-Squelch/R-Squelch/Source/UI/FxModules.h:166:41: warning: private field 'state' is not used [-Wunused-private-field]
+  166 |     juce::AudioProcessorValueTreeState& state;
+      |                                         ^
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.cpp:1:
+In file included from /Users/runner/work/R-Squelch/R-Squelch/Source/PluginEditor.h:16:
+/Users/runner/work/R-Squelch/R-Squelch/Source/UI/FxModules.h:166:41: warning: private field 'state' is not used [-Wunused-private-field]
+  166 |     juce::AudioProcessorValueTreeState& state;
+      |                                         ^
+5 warnings generated.
+[ 26%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_2.cpp.o
+[ 28%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_3.cpp.o
+5 warnings generated.
+[ 31%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_4.cpp.o
+[ 33%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics_5.cpp.o
+[ 35%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.mm.o
+In file included from /Users/runner/work/R-Squelch/R-Squelch/build/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.mm:35:
+/Users/runner/work/R-Squelch/R-Squelch/build/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.cpp:61:2: warning: This version of JUCE does not use the splash screen, the flag JUCE_DISPLAY_SPLASH_SCREEN is ignored [-W#pragma-messages]
+   61 |  JUCE_COMPILER_WARNING ("This version of JUCE does not use the splash screen, the flag JUCE_DISPLAY_SPLASH_SCREEN is ignored")
+      |  ^
+/Users/runner/work/R-Squelch/R-Squelch/build/_deps/juce-src/modules/juce_core/system/juce_PlatformDefs.h:292:38: note: expanded from macro 'JUCE_COMPILER_WARNING'
+  292 |  #define JUCE_COMPILER_WARNING(msg)  _Pragma (JUCE_STRINGIFY (message (msg)))
+      |                                      ^
+<scratch space>:170:2: note: expanded from here
+  170 |  message ("This version of JUCE does not use the splash screen, the flag JUCE_DISPLAY_SPLASH_SCREEN is ignored")
+      |  ^
+[ 37%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Harfbuzz.cpp.o
+[ 40%] Building C object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_graphics/juce_graphics_Sheenbidi.c.o
+[ 42%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_graphics/juce_graphics.mm.o
+[ 44%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_events/juce_events.mm.o
+1 warning generated.
+In file included from /Users/runner/work/R-Squelch/R-Squelch/build/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.mm:35:
+/Users/runner/work/R-Squelch/R-Squelch/build/_deps/juce-src/modules/juce_gui_basics/juce_gui_basics.cpp:61:2: warning: This version of JUCE does not use the splash screen, the flag JUCE_DISPLAY_SPLASH_SCREEN is ignored [-W#pragma-messages]
+   61 |  JUCE_COMPILER_WARNING ("This version of JUCE does not use the splash screen, the flag JUCE_DISPLAY_SPLASH_SCREEN is ignored")
+      |  ^
+/Users/runner/work/R-Squelch/R-Squelch/build/_deps/juce-src/modules/juce_core/system/juce_PlatformDefs.h:292:38: note: expanded from macro 'JUCE_COMPILER_WARNING'
+  292 |  #define JUCE_COMPILER_WARNING(msg)  _Pragma (JUCE_STRINGIFY (message (msg)))
+      |                                      ^
+<scratch space>:83:2: note: expanded from here
+   83 |  message ("This version of JUCE does not use the splash screen, the flag JUCE_DISPLAY_SPLASH_SCREEN is ignored")
+      |  ^
+[ 46%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_core/juce_core_CompilationTime.cpp.o
+[ 48%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_core/juce_core.mm.o
+1 warning generated.
+[ 51%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_data_structures/juce_data_structures.mm.o
+[ 53%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_ara.cpp.o
+[ 55%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless_lv2_libs.cpp.o
+[ 57%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_processors_headless/juce_audio_processors_headless.mm.o
+[ 60%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_basics/juce_audio_basics.mm.o
+[ 62%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_utils/juce_audio_utils.mm.o
+[ 64%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_formats/juce_audio_formats.mm.o
+[ 66%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_audio_devices/juce_audio_devices.mm.o
+[ 68%] Building CXX object CMakeFiles/RSquelch.dir/_deps/juce-src/modules/juce_dsp/juce_dsp.mm.o
+[ 71%] Linking CXX static library RSquelch_artefacts/Release/libR-Squelch_SharedCode.a
+[ 71%] Built target RSquelch
+[ 73%] Generating RSquelch_artefacts/JuceLibraryCode/RSquelch_VST3/PkgInfo
+[ 77%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[ 77%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[ 82%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[ 82%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[ 84%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.mm.o
+[ 86%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AU_1.mm.o
+[ 88%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AU_2.mm.o
+[ 91%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AUv3.mm.o
+[ 93%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.mm.o
+[ 95%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.mm.o
+[ 97%] Building CXX object CMakeFiles/RSquelch_VST3.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.mm.o
+Copying OS X content RSquelch_artefacts/Release/VST3/R-Squelch.vst3/Contents/Resources/AppIcon.icns
+[100%] Linking CXX CFBundle shared module RSquelch_artefacts/Release/VST3/R-Squelch.vst3/Contents/MacOS/R-Squelch
+/Users/runner/work/R-Squelch/R-Squelch/build/RSquelch_artefacts/Release/VST3/R-Squelch.vst3: code object is not signed at all
+In architecture: x86_64
+-- Replacing invalid signature with ad-hoc signature
+removing moduleinfo.json
+creating /Users/runner/work/R-Squelch/R-Squelch/build/RSquelch_artefacts/Release/VST3/R-Squelch.vst3/Contents/Resources/moduleinfo.json
+[100%] Built target RSquelch_VST3
+[ 13%] Built target RSquelchAssets
+[ 70%] Built target RSquelch
+[ 72%] Generating RSquelch_artefacts/JuceLibraryCode/RSquelch_AU/PkgInfo
+[ 75%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[ 77%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[ 81%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[ 81%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[ 84%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.mm.o
+[ 88%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AU_1.mm.o
+[ 88%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AU_2.mm.o
+[ 90%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AUv3.mm.o
+[ 93%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.mm.o
+[ 95%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.mm.o
+[ 97%] Building CXX object CMakeFiles/RSquelch_AU.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.mm.o
+Copying OS X content RSquelch_artefacts/Release/AU/R-Squelch.component/Contents/Resources/AppIcon.icns
+[100%] Linking CXX CFBundle shared module RSquelch_artefacts/Release/AU/R-Squelch.component/Contents/MacOS/R-Squelch
+[100%] Built target RSquelch_AU
+[ 13%] Built target RSquelchAssets
+[ 70%] Built target RSquelch
+[ 72%] Generating RSquelch_artefacts/JuceLibraryCode/RSquelch_Standalone/PkgInfo
+[ 75%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX_utils.cpp.o
+[ 77%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_ARA.cpp.o
+[ 79%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Standalone.cpp.o
+[ 81%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_Unity.cpp.o
+[ 84%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AAX.mm.o
+[ 86%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AU_1.mm.o
+[ 88%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AU_2.mm.o
+[ 90%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_AUv3.mm.o
+[ 93%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_LV2.mm.o
+[ 95%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST2.mm.o
+[ 97%] Building CXX object CMakeFiles/RSquelch_Standalone.dir/_deps/juce-src/modules/juce_audio_plugin_client/juce_audio_plugin_client_VST3.mm.o
+Copying OS X content RSquelch_artefacts/Release/Standalone/R-Squelch.app/Contents/Resources/AppIcon.icns
+Copying OS X content RSquelch_artefacts/Release/Standalone/R-Squelch.app/Contents/Resources/RecentFilesMenuTemplate.nib
+[100%] Linking CXX executable RSquelch_artefacts/Release/Standalone/R-Squelch.app/Contents/MacOS/R-Squelch
+[100%] Built target RSquelch_Standalone
+[ 50%] Building CXX object CMakeFiles/RSquelchDspTests.dir/tests/DspTests.cpp.o
+[100%] Linking CXX executable RSquelchDspTests
+[100%] Built target RSquelchDspTests
